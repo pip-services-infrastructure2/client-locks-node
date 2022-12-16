@@ -7,7 +7,7 @@ import { LocksMemoryPersistence } from 'service-locks-node';
 import { LocksController } from 'service-locks-node';
 import { LocksHttpServiceV1 } from 'service-locks-node';
 import { ILocksClientV1 } from '../../src/version1/ILocksClientV1';
-import { LocksHttpClientV1 } from '../../src/version1/LocksHttpClientV1';
+import { LocksCommandableHttpClientV1 } from '../../src/version1/LocksCommandableHttpClientV1';
 import { LocksClientFixtureV1 } from './LocksClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -16,9 +16,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('LocksHttpServiceV1', () => {
+suite('LocksCommandableHttpServiceV1', () => {
     let service: LocksHttpServiceV1;
-    let client: LocksHttpClientV1;
+    let client: LocksCommandableHttpClientV1;
     let fixture: LocksClientFixtureV1;
 
     setup(async () => {
@@ -37,7 +37,7 @@ suite('LocksHttpServiceV1', () => {
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-locks', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-locks', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-locks', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-locks', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         controller.configure(ConfigParams.fromTuples(
@@ -47,7 +47,7 @@ suite('LocksHttpServiceV1', () => {
 
         service.setReferences(references);
 
-        client = new LocksHttpClientV1();
+        client = new LocksCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

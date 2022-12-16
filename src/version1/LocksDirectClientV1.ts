@@ -23,12 +23,12 @@ export class LocksDirectClientV1 extends DirectClient<any> implements ILocksClie
         let timing = this.instrument(correlationId, 'locks.get_locks');
         
         try {
-            return await this._controller.getLocks(correlationId, filter, paging);
+            let res = await this._controller.getLocks(correlationId, filter, paging);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -36,12 +36,12 @@ export class LocksDirectClientV1 extends DirectClient<any> implements ILocksClie
         let timing = this.instrument(correlationId, 'locks.get_lock_by_id');
         
         try {
-            return await this._controller.getLockById(correlationId, key);
+            let res = await this._controller.getLockById(correlationId, key);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -49,12 +49,12 @@ export class LocksDirectClientV1 extends DirectClient<any> implements ILocksClie
         let timing = this.instrument(correlationId, 'locks.try_acquire_lock');
         
         try {
-            return await this._controller.tryAcquireLock(correlationId, key, ttl, this._clientId);
+            let res = await this._controller.tryAcquireLock(correlationId, key, ttl, this._clientId);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -62,12 +62,12 @@ export class LocksDirectClientV1 extends DirectClient<any> implements ILocksClie
         let timing = this.instrument(correlationId, 'locks.acquire_lock');
         
         try {
-            return await this._controller.acquireLock(correlationId, key, ttl, timeout, this._clientId);
+            let res = await this._controller.acquireLock(correlationId, key, ttl, timeout, this._clientId);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -75,12 +75,12 @@ export class LocksDirectClientV1 extends DirectClient<any> implements ILocksClie
         let timing = this.instrument(correlationId, 'locks.release_lock');
         
         try {
-            return await this._controller.releaseLock(correlationId, key, this._clientId);
+            let res = await this._controller.releaseLock(correlationId, key, this._clientId);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 }

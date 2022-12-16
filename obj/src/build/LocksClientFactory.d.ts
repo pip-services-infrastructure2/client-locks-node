@@ -6,6 +6,6 @@ export declare class LocksClientFactory extends Factory {
     static HttpLockDescriptor: Descriptor;
     static NullClientV1Descriptor: Descriptor;
     static DirectClientV1Descriptor: Descriptor;
-    static HttpClientV1Descriptor: Descriptor;
+    static CmdHttpClientV1Descriptor: Descriptor;
     constructor();
 }

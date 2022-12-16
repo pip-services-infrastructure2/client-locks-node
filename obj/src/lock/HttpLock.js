@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpLock = void 0;
 const AbstractLock_1 = require("./AbstractLock");
-const LocksHttpClientV1_1 = require("../version1/LocksHttpClientV1");
+const LocksCommandableHttpClientV1_1 = require("../version1/LocksCommandableHttpClientV1");
 class HttpLock extends AbstractLock_1.AbstractLock {
     constructor() {
-        super(new LocksHttpClientV1_1.LocksHttpClientV1());
+        super(new LocksCommandableHttpClientV1_1.LocksCommandableHttpClientV1());
     }
 }
 exports.HttpLock = HttpLock;

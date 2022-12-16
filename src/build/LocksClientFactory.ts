@@ -3,7 +3,7 @@ import { Factory } from 'pip-services3-components-nodex';
 
 import { LocksNullClientV1 } from '../version1/LocksNullClientV1';
 import { LocksDirectClientV1 } from '../version1/LocksDirectClientV1';
-import { LocksHttpClientV1 } from '../version1/LocksHttpClientV1';
+import { LocksCommandableHttpClientV1 } from '../version1/LocksCommandableHttpClientV1';
 import { DirectLock } from '../lock/DirectLock';
 import { HttpLock } from '../lock/HttpLock';
 
@@ -15,7 +15,7 @@ export class LocksClientFactory extends Factory {
 
 	public static NullClientV1Descriptor = new Descriptor('services-locks', 'client', 'null', 'default', '1.0');
 	public static DirectClientV1Descriptor = new Descriptor('services-locks', 'client', 'direct', 'default', '1.0');
-	public static HttpClientV1Descriptor = new Descriptor('services-locks', 'client', 'http', 'default', '1.0');
+	public static CmdHttpClientV1Descriptor = new Descriptor('services-locks', 'client', 'commandable-http', 'default', '1.0');
 
 	constructor() {
 		super();
@@ -25,6 +25,6 @@ export class LocksClientFactory extends Factory {
 
 		this.registerAsType(LocksClientFactory.NullClientV1Descriptor, LocksNullClientV1);
 		this.registerAsType(LocksClientFactory.DirectClientV1Descriptor, LocksDirectClientV1);
-		this.registerAsType(LocksClientFactory.HttpClientV1Descriptor, LocksHttpClientV1);
+		this.registerAsType(LocksClientFactory.CmdHttpClientV1Descriptor, LocksCommandableHttpClientV1);
 	}
 }
